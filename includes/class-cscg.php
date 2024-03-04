@@ -122,6 +122,8 @@ class Cscg {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-cscg-public.php';
 
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/controller/generator-form/landing.php';
+
 		$this->loader = new Cscg_Loader();
 
 	}
@@ -173,6 +175,9 @@ class Cscg {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 
+
+		$CSCG_public_landing = new CSCG_public_landing();
+		$this->loader->add_shortcode('CSCG_form', $CSCG_public_landing, 'CSCG_form');
 	}
 
 	/**

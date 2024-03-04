@@ -22,4 +22,12 @@
  */
 class CSCG_public_landing
 {
+
+    public function CSCG_form()
+    {
+
+      include_once plugin_dir_path( dirname( __FILE__ ) ) . '../partials/generator-form/index.php';
+
+    }
+    
 }
