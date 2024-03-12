@@ -34,3 +34,11 @@ class CSCG_public_landing
 
     return ob_get_clean();
   }
+
+  public function wp_ajax_cscg_fetch_selection()
+  {
+    $select_name = $_POST['selectedValue'];
+    include_once plugin_dir_path(dirname(__FILE__)) . '../partials/smart-contracts/' . $select_name . '/index.php';
+    die();
+  }
+}
