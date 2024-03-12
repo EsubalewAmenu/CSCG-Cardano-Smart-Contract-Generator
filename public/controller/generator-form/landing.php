@@ -23,11 +23,14 @@
 class CSCG_public_landing
 {
 
-    public function CSCG_form()
-    {
+  public function CSCG_form()
+  {
 
-      include_once plugin_dir_path( dirname( __FILE__ ) ) . '../partials/generator-form/index.php';
 
-    }
-    
-}
+    $options_variable = cscg_active_sc;
+    ob_start();
+    wp_enqueue_style('cscg-form-style', plugin_dir_url(__FILE__) . '../../css/cscg-public-form.css', false, '1.0', 'all');
+    include_once plugin_dir_path(dirname(__FILE__)) . '../partials/generator-form/index.php';
+
+    return ob_get_clean();
+  }
