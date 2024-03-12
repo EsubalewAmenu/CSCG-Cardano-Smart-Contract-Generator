@@ -23,6 +23,6 @@
 class CSCG_public_common
 {
 
-    $active_sc = array("NFT" => "nft", "Burn" => "burn", "Mint" => "mint");
+    // $active_sc = array("NFT" => "nft", "Burn" => "burn", "Mint" => "mint");
 
 }

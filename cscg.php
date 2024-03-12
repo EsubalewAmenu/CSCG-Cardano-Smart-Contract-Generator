@@ -26,8 +26,12 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
+}
+
+if (!defined('cscg_active_sc')) {
+	define('cscg_active_sc', array("NFT" => "nft", "Burn" => "burn", "Mint" => "mint"));
 }
 
 /**
@@ -35,14 +39,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'CSCG_VERSION', '1.0.0' );
+define('CSCG_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-cscg-activator.php
  */
-function activate_cscg() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cscg-activator.php';
+function activate_cscg()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-cscg-activator.php';
 	Cscg_Activator::activate();
 }
 
@@ -50,19 +55,20 @@ function activate_cscg() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-cscg-deactivator.php
  */
-function deactivate_cscg() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-cscg-deactivator.php';
+function deactivate_cscg()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-cscg-deactivator.php';
 	Cscg_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_cscg' );
-register_deactivation_hook( __FILE__, 'deactivate_cscg' );
+register_activation_hook(__FILE__, 'activate_cscg');
+register_deactivation_hook(__FILE__, 'deactivate_cscg');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-cscg.php';
+require plugin_dir_path(__FILE__) . 'includes/class-cscg.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +79,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-cscg.php';
  *
  * @since    1.0.0
  */
-function run_cscg() {
+function run_cscg()
+{
 
 	$plugin = new Cscg();
 	$plugin->run();
-
 }
 run_cscg();
