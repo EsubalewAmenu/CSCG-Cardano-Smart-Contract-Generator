@@ -2,8 +2,8 @@
     <form class="form" action="" method="post">
         <div class="form-container">
             <div class="input-parent">
-                <label class="form-label" for="fname">First Name:</label>
-                <input class="form-input" type="text" name="fname" id="fname" required>
+                <label class="form-label" for="project_name">Project Name:</label>
+                <input class="form-input" type="text" name="project_name" id="project_name" required>
             </div>
             <div class="input-parent">
                 <label class="form-label" for="email">Email:</label>
@@ -26,12 +26,12 @@
                     <?php } ?>
                 </select>
             </div>
-            <div class="fetched-value"></div>
 
         </div>
+            <div class="fetched-value"></div>
 
 
-        <button id="submit_btn" class="submit-button" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Submit</button>
+        <button id="submit_btn" class="submit-button" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Generate the Smart contract code</button>
     </form>
 </div>
 
