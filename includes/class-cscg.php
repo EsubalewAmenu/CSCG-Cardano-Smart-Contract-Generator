@@ -180,6 +180,10 @@ class Cscg {
 		$this->loader->add_shortcode('CSCG_form', $CSCG_public_landing, 'CSCG_form');
 		$this->loader->add_action('wp_ajax_cscg_fetch_selection', $CSCG_public_landing, 'wp_ajax_cscg_fetch_selection');
 		$this->loader->add_action('wp_ajax_nopriv_cscg_fetch_selection', $CSCG_public_landing, 'wp_ajax_cscg_fetch_selection');
+
+		$this->loader->add_action('wp_ajax_cscg_generate_token', $CSCG_public_landing, 'wp_ajax_cscg_generate_token');
+		$this->loader->add_action('wp_ajax_nopriv_cscg_generate_token', $CSCG_public_landing, 'wp_ajax_cscg_generate_token');
+		
 	}
 
 	/**
