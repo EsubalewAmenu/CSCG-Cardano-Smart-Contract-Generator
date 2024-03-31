@@ -30,7 +30,7 @@
         </div>
         <div class="fetched-value"></div>
 
-        <button id="submit_btn" class="submit-button" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Generate the Smart contract code</button>
+        <button id="submit_btn" disabled="true" class="submit-button btn-disabled" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Generate the Smart contract code</button>
     </form>
 </div>
 <script>
@@ -38,7 +38,7 @@
     const dynamicContainer = document.querySelector('.fetched-value')
     const dropDownInput = document.querySelector('#dropDown')
     const generateToken = document.querySelector('#submit_btn')
-
+    let btnStatus = false
 
     function fetchContent(selectedValue) {
         jQuery.ajax({
@@ -51,12 +51,8 @@
             success: function(response) {
 
                 dynamicContainer.innerHTML = response
-
-                // if (data.status = 'success') {
-                //     alert(data.message);
-                // } else {
-                //     console.error(data.message);
-                // }
+                generateToken.classList.remove('btn-disabled')
+                generateToken.disabled = false
             }
         });
     }
@@ -77,21 +73,25 @@
     }
     generateToken.addEventListener('click', function(element) {
         const projectName = document.querySelector('#project_name')
-        
-        jQuery.ajax({
-            url: ajaxurl,
-            type: 'POST',
-            data: {
-                action: 'cscg_generate_token',
-                projectName:projectName.value
-            },
-            success: function(response) {
-                const res = JSON.parse(response)
-                if(res.status == 'success'){
-                    downloadFile(res.message,projectName.value)
-                } 
-            }
-        });
+        if(!projectName.value || projectName.value == ''){
+            alert("Please Enter Your project name!")
+        }
+        else{
+            jQuery.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'cscg_generate_token',
+                    projectName:projectName.value
+                },
+                success: function(response) {
+                    const res = JSON.parse(response)
+                    if(res.status == 'success'){
+                        downloadFile(res.message,projectName.value)
+                    } 
+                }
+            });
+        }
 
     })
 </script>
