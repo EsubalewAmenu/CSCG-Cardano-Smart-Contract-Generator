@@ -41,4 +41,19 @@ class CSCG_public_landing
     include_once plugin_dir_path(dirname(__FILE__)) . '../partials/smart-contracts/' . $select_name . '/index.php';
     die();
   }
+
+  public function wp_ajax_cscg_generate_token(){
+    $file_path = plugin_dir_path(__FILE__).'file/sample.txt';
+    $file_content = file_get_contents($file_path);
+    $project_name = $_POST['projectName'];
+
+    $file_content = str_replace("{{project_name}}", $project_name, $file_content);
+    echo json_encode(
+      array(
+        'status' => 'success', 'message' => $file_content
+      )
+    );
+    die();
+  }
+
 }
