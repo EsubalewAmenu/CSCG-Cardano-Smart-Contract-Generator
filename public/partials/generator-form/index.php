@@ -13,7 +13,7 @@
 
         <div>
             <label class="form-label" for="email">URL:</label>
-            <input class="form-input" type="email" name="email" id="email" required>
+            <input class="form-input" type="text" name="email" id="email" required>
         </div>
 
         <div class="form-container drop-down-container" style="float: left;width:50%;">
@@ -28,17 +28,16 @@
             </div>
 
         </div>
-            <div class="fetched-value"></div>
-
+        <div class="fetched-value"></div>
 
         <button id="submit_btn" class="submit-button" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Generate the Smart contract code</button>
     </form>
 </div>
-
 <script>
     var ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
     const dynamicContainer = document.querySelector('.fetched-value')
     const dropDownInput = document.querySelector('#dropDown')
+    const generateToken = document.querySelector('#submit_btn')
 
 
     function fetchContent(selectedValue) {
@@ -63,5 +62,36 @@
     }
     dropDownInput.addEventListener('change', function(element) {
         fetchContent(element.target.value)
+    })
+    function downloadFile(text,filename){
+        const element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        element.setAttribute('download', filename+'.txt');
+
+        element.style.display = 'none';
+        document.body.appendChild(element);
+
+        element.click();
+
+        document.body.removeChild(element);
+    }
+    generateToken.addEventListener('click', function(element) {
+        const projectName = document.querySelector('#project_name')
+        
+        jQuery.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'cscg_generate_token',
+                projectName:projectName.value
+            },
+            success: function(response) {
+                const res = JSON.parse(response)
+                if(res.status == 'success'){
+                    downloadFile(res.message,projectName.value)
+                } 
+            }
+        });
+
     })
 </script>
