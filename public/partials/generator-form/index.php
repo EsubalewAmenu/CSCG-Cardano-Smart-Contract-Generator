@@ -26,7 +26,6 @@
                     <?php } ?>
                 </select>
             </div>
-
         </div>
         <div class="fetched-value"></div>
 
@@ -49,7 +48,7 @@
                 selectedValue
             },
             success: function(response) {
-
+                console.log(response);
                 dynamicContainer.innerHTML = response
                 generateToken.classList.remove('btn-disabled')
                 generateToken.disabled = false
