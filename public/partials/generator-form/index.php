@@ -26,7 +26,6 @@
                     <?php } ?>
                 </select>
             </div>
-
         </div>
         <div class="fetched-value"></div>
 
@@ -38,6 +37,8 @@
     const dynamicContainer = document.querySelector('.fetched-value')
     const dropDownInput = document.querySelector('#dropDown')
     const generateToken = document.querySelector('#submit_btn')
+    let ownerRefCheckbox;
+    let ownerRefContainer;
     let btnStatus = false
 
     function fetchContent(selectedValue) {
@@ -49,10 +50,10 @@
                 selectedValue
             },
             success: function(response) {
-
                 dynamicContainer.innerHTML = response
                 generateToken.classList.remove('btn-disabled')
                 generateToken.disabled = false
+                handler()
             }
         });
     }
@@ -94,4 +95,19 @@
         }
 
     })
+
+     function handler(){
+        ownerRefCheckbox = document.querySelector('#owner_ref_address')
+        ownerRefContainer = document.querySelector('.owner-ref-address-container')
+        ownerRefCheckbox.addEventListener('change',function(){
+            if(this.checked){
+                ownerRefContainer.classList.remove('hidden')
+            }
+            else{
+                ownerRefContainer.classList.add('hidden')
+
+            }
+        })
+    }
+
 </script>
