@@ -32,6 +32,9 @@
         <button id="submit_btn" disabled="true" class="submit-button btn-disabled" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Generate the Smart contract code</button>
     </form>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 <script>
     var ajaxurl = "<?php echo admin_url('admin-ajax.php') ?>";
     const dynamicContainer = document.querySelector('.fetched-value')
@@ -40,6 +43,9 @@
     let ownerRefCheckbox;
     let ownerRefContainer;
     let btnStatus = false
+    let option = ''
+
+
 
     function fetchContent(selectedValue) {
         jQuery.ajax({
@@ -58,20 +64,40 @@
         });
     }
     dropDownInput.addEventListener('change', function(element) {
+        option = element.target.value
         fetchContent(element.target.value)
     })
-    function downloadFile(text,filename){
-        const element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-        element.setAttribute('download', filename+'.txt');
-
-        element.style.display = 'none';
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
+    
+    // Function to generate a zip file
+    function generateZip(content, filename) {
+        var zip = new JSZip();
+        if (option.indexOf('mint') !== -1) {
+            zip.file("mint.hs", content);    
+        } else if (option.indexOf('burn') !== -1) {
+            zip.file("burn.hs", content);    
+        }
+    
+        // Add files to the zip
+        // Generate the zip file
+        zip.generateAsync({type:"blob"}).then(function(content) {
+        // Save the zip file
+        saveAs(content, `${filename}.zip`);
+        });
     }
+    // function downloadFile(text,filename){
+
+
+    //     const element = document.createElement('a');
+    //     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    //     element.setAttribute('download', filename+'.txt');
+
+    //     element.style.display = 'none';
+    //     document.body.appendChild(element);
+
+    //     element.click();
+
+    //     document.body.removeChild(element);
+    // }
     generateToken.addEventListener('click', function(element) {
         const projectName = document.querySelector('#project_name')
         if(!projectName.value || projectName.value == ''){
@@ -88,7 +114,8 @@
                 success: function(response) {
                     const res = JSON.parse(response)
                     if(res.status == 'success'){
-                        downloadFile(res.message,projectName.value)
+                        generateZip(res.message,projectName.value)
+                        // downloadFile(res.message,projectName.value)
                     } 
                 }
             });
