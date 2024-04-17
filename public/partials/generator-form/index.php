@@ -26,7 +26,6 @@
                     <?php } ?>
                 </select>
             </div>
-
         </div>
         <div class="fetched-value"></div>
 
