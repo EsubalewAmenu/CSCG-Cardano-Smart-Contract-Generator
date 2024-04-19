@@ -2,18 +2,13 @@
     <form class="form" action="" method="post">
         <div class="form-container">
             <div class="input-parent">
-                <label class="form-label" for="project_name">Project Name:</label>
+                <label class="form-label" for="project_name">Module Name:</label>
                 <input class="form-input" type="text" name="project_name" id="project_name" required>
             </div>
             <div class="input-parent">
                 <label class="form-label" for="email">Email:</label>
                 <input class="form-input" type="email" name="email" id="email" required>
             </div>
-        </div>
-
-        <div>
-            <label class="form-label" for="email">URL:</label>
-            <input class="form-input" type="text" name="email" id="email" required>
         </div>
 
         <div class="form-container drop-down-container" style="float: left;width:50%;">
