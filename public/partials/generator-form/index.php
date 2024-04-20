@@ -5,10 +5,6 @@
                 <label class="form-label" for="project_name">Module Name:</label>
                 <input class="form-input" type="text" name="project_name" id="project_name" required>
             </div>
-            <div class="input-parent">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-input" type="email" name="email" id="email" required>
-            </div>
         </div>
 
         <div class="form-container drop-down-container" style="float: left;width:50%;">
@@ -104,9 +100,20 @@
                 type: 'POST',
                 data: {
                     action: 'cscg_generate_token',
-                    projectName:projectName.value
+                    projectName:projectName.value,
+                    
+                    token_name: document.querySelector('#token_name').value,
+                    inlineable_token_name_checkbox: document.querySelector('#inlineable_token_name_checkbox').checked,
+                    owner_ref_address_checkbox: document.querySelector('#owner_ref_address_checkbox').checked,
+                    owner_ref_address: document.querySelector('#owner_ref_address').value,
+                    image_url: document.querySelector('#image_url').value,
+                    description: document.querySelector('#description').value,
+                    add_offchain_code: document.querySelector('#add_offchain_code').checked,
+                    
                 },
                 success: function(response) {
+                    // console.log("test response");
+                    // console.log(response);
                     const res = JSON.parse(response)
                     if(res.status == 'success'){
                         generateZip(res.message,projectName.value)
@@ -119,7 +126,7 @@
     })
 
      function handler(){
-        ownerRefCheckbox = document.querySelector('#owner_ref_address')
+        ownerRefCheckbox = document.querySelector('#owner_ref_address_checkbox')
         ownerRefContainer = document.querySelector('.owner-ref-address-container')
         ownerRefCheckbox.addEventListener('change',function(){
             if(this.checked){
