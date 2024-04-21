@@ -60,13 +60,14 @@
     })
     
     // Function to generate a zip file
-    function generateZip(content, filename) {
+    function generateZip(contracts, filename) {
         var zip = new JSZip();
-        if (option.indexOf('mint') !== -1) {
-            zip.file("mint.hs", content);    
-        } else if (option.indexOf('burn') !== -1) {
-            zip.file("burn.hs", content);    
-        }
+
+        for (let key in contracts) {
+                if (contracts.hasOwnProperty(key)) { // This check isn't strictly necessary in modern JavaScript environments
+            zip.file(key, contracts[key]);
+                }
+            }
     
         // Add files to the zip
         // Generate the zip file
@@ -116,8 +117,8 @@
                     // console.log(response);
                     const res = JSON.parse(response)
                     if(res.status == 'success'){
-                        generateZip(res.message,projectName.value)
-                        // downloadFile(res.message,projectName.value)
+                        generateZip(res.contracts,projectName.value)
+                        // downloadFile(res.contracts,projectName.value)
                     } 
                 }
             });

@@ -108,7 +108,7 @@ nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn', $file_content);
 
     echo json_encode(
       array(
-        'status' => 'success', 'message' => $file_content
+        'status' => 'success', 'contracts' => array("NFT.hs" => $file_content, "lucid-nft.ts" => "test lucid-nft.ts")
       )
     );
     die();
