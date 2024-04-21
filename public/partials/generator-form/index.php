@@ -77,6 +77,8 @@
         });
     }
     generateToken.addEventListener('click', function(element) {
+        // event.preventDefault();  // This stops the form from submitting normally
+
         const projectName = document.querySelector('#project_name')
         if(!projectName.value || projectName.value == ''){
             alert("Please Enter Your project name!")
