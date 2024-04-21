@@ -50,7 +50,15 @@
                 dynamicContainer.innerHTML = response
                 generateToken.classList.remove('btn-disabled')
                 generateToken.disabled = false
-                handler()
+
+
+            // Find and execute scripts
+            Array.from(dynamicContainer.querySelectorAll('script')).forEach(oldScript => {
+                const newScript = document.createElement('script');
+                newScript.text = oldScript.text;
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
+
             }
         });
     }
@@ -69,7 +77,6 @@
                 }
             }
     
-        // Add files to the zip
         // Generate the zip file
         zip.generateAsync({type:"blob"}).then(function(content) {
         // Save the zip file
@@ -91,13 +98,7 @@
                     action: 'cscg_generate_token',
                     projectName:projectName.value,
                     
-                    token_name: document.querySelector('#token_name').value,
-                    inlineable_token_name_checkbox: document.querySelector('#inlineable_token_name_checkbox').checked,
-                    owner_ref_address_checkbox: document.querySelector('#owner_ref_address_checkbox').checked,
-                    owner_ref_address: document.querySelector('#owner_ref_address').value,
-                    image_url: document.querySelector('#image_url').value,
-                    description: document.querySelector('#description').value,
-                    add_offchain_code: document.querySelector('#add_offchain_code').checked,
+                    ...getFormData()
                     
                 },
                 success: function(response) {
@@ -110,19 +111,5 @@
         }
 
     })
-
-     function handler(){
-        ownerRefCheckbox = document.querySelector('#owner_ref_address_checkbox')
-        ownerRefContainer = document.querySelector('.owner-ref-address-container')
-        ownerRefCheckbox.addEventListener('change',function(){
-            if(this.checked){
-                ownerRefContainer.classList.remove('hidden')
-            }
-            else{
-                ownerRefContainer.classList.add('hidden')
-
-            }
-        })
-    }
 
 </script>

@@ -47,6 +47,30 @@
 </div>
 
 <script>
-    console.log(document.querySelector('#owner_ref_address'));
-    console.log('hello');
+
+    ownerRefCheckbox = document.querySelector('#owner_ref_address_checkbox')
+    ownerRefContainer = document.querySelector('.owner-ref-address-container')
+    ownerRefCheckbox.addEventListener('change',function(){
+        if(this.checked){
+            ownerRefContainer.classList.remove('hidden')
+        }
+        else{
+            ownerRefContainer.classList.add('hidden')
+
+        }
+    })
+
+    function getFormData() {
+    return {
+        token_name: document.querySelector('#token_name').value,
+        inlineable_token_name_checkbox: document.querySelector('#inlineable_token_name_checkbox').checked,
+        owner_ref_address_checkbox: document.querySelector('#owner_ref_address_checkbox').checked,
+        owner_ref_address: document.querySelector('#owner_ref_address').value,
+        image_url: document.querySelector('#image_url').value,
+        description: document.querySelector('#description').value,
+        add_offchain_code: document.querySelector('#add_offchain_code').checked,
+    };
+}
+
+
 </script> 
