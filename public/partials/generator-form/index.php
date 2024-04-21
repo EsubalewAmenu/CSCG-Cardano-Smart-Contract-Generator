@@ -76,20 +76,6 @@
         saveAs(content, `${filename}.zip`);
         });
     }
-    // function downloadFile(text,filename){
-
-
-    //     const element = document.createElement('a');
-    //     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    //     element.setAttribute('download', filename+'.txt');
-
-    //     element.style.display = 'none';
-    //     document.body.appendChild(element);
-
-    //     element.click();
-
-    //     document.body.removeChild(element);
-    // }
     generateToken.addEventListener('click', function(element) {
         const projectName = document.querySelector('#project_name')
         if(!projectName.value || projectName.value == ''){
@@ -113,12 +99,9 @@
                     
                 },
                 success: function(response) {
-                    // console.log("test response");
-                    // console.log(response);
                     const res = JSON.parse(response)
                     if(res.status == 'success'){
                         generateZip(res.contracts,projectName.value)
-                        // downloadFile(res.contracts,projectName.value)
                     } 
                 }
             });
