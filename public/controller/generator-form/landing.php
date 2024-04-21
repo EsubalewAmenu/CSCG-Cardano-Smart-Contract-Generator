@@ -52,14 +52,20 @@ class CSCG_public_landing
 
       $contracts = $CSCG_public_NFT->content_generator();
 
-      echo json_encode(
-        array(
-          'status' => 'success', 'contracts' => $contracts
-        )
-      );
-    // }else if($smart_contract_type == "v"){
+    }else if($smart_contract_type == "vesting"){
     
+      require_once plugin_dir_path( dirname( __FILE__ ) ) . 'smart-contracts/Vesting.php';
+      $CSCG_public_Vesting = new CSCG_public_Vesting();
+
+      $contracts = $CSCG_public_Vesting->content_generator();
+
     }
+
+    echo json_encode(
+      array(
+        'status' => 'success', 'contracts' => $contracts
+      )
+    );
 
     die();
   }

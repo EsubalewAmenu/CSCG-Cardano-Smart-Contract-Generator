@@ -7,7 +7,7 @@
             </div>
         </div>
 
-        <div class="form-container drop-down-container" style="float: left;width:50%;">
+        <div class="form-container drop-down-container">
             <div class="input-parent">
                 <label class="form-label" for="email">Choose:</label>
                 <select id="dropDown" class="form-input">
