@@ -52,7 +52,14 @@
             <textarea class="form-input"  name="description" id="description"  cols="77" rows="3"></textarea>
     </div>
 </div>
-           
+
+<div class="form-container">
+    <div class="checkbox-parent">
+        <input class="form-input form-checkbox" type="checkbox" name="burn_code" id="burn_code">
+        <label class="form-label" for="burn_code">Do You Want NFT Burn Code</label>
+    </div>
+</div>
+
 <script>
 
 offchainCodeCheckbox = document.querySelector('#offchain_code_checkbox')
@@ -91,6 +98,7 @@ offchainCodeCheckbox = document.querySelector('#offchain_code_checkbox')
         image_url: document.querySelector('#image_url').value,
         description: document.querySelector('#description').value,
         add_offchain_code: document.querySelector('#add_offchain_code').checked,
+        burn_code: document.querySelector('#burn_code').checked,
     };
 }
 

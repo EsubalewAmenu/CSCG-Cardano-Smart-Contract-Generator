@@ -30,11 +30,8 @@ if (!defined('WPINC')) {
 	die;
 }
 
-// if (!defined('cscg_active_sc')) {
-// 	define('cscg_active_sc', array("NFT" => "nft", "Burn" => "burn", "Mint" => "mint"));
-// }
 if (!defined('cscg_active_sc')) {
-	define('cscg_active_sc', array("NFT burn" => "nft-burn", "NFT mint" => "nft-mint"));
+	define('cscg_active_sc', array("NFT" => "nft", "Vesting" => "vesting"));
 }
 
 /**

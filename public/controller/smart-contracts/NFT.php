@@ -35,6 +35,7 @@ public function content_generator(){
     $image_url = $_POST['image_url'];
     $description = $_POST['description'];
     $add_offchain_code = $_POST['add_offchain_code'];
+    $burn_code = $_POST['burn_code'];
 
     $file_content = str_replace("{{project_name}}", $project_name, $file_content);
 
@@ -96,6 +97,16 @@ if($offchain_code_checkbox == "true"){
   
 
   $smart_contracts[] = array("lucid-nft.ts" => $file_content);
+
+}
+
+if($burn_code == "true"){
+
+  $file_path = plugin_dir_path(__FILE__).'templete/Burn.hs';
+  $file_content = file_get_contents($file_path);
+  
+
+  $smart_contracts[] = array("Burn.hs" => $file_content);
 
 }
 

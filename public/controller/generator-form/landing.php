@@ -44,21 +44,23 @@ class CSCG_public_landing
 
   public function wp_ajax_cscg_generate_token(){
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'smart-contracts/NFT.php';
-    $CSCG_public_NFT = new CSCG_public_NFT();
+    $smart_contract_type = $_POST['smart_contract_type'];
 
-    $contracts = $CSCG_public_NFT->content_generator();
+    if($smart_contract_type == "nft"){
+      require_once plugin_dir_path( dirname( __FILE__ ) ) . 'smart-contracts/NFT.php';
+      $CSCG_public_NFT = new CSCG_public_NFT();
 
-    echo json_encode(
-      array(
-        'status' => 'success', 'contracts' => $contracts
-      )
-    );
-    // echo json_encode(
-    //   array(
-    //     'status' => 'success', 'contracts' => array("NFT.hs" => $file_content, "lucid-nft.ts" => "test lucid-nft.ts")
-    //   )
-    // );
+      $contracts = $CSCG_public_NFT->content_generator();
+
+      echo json_encode(
+        array(
+          'status' => 'success', 'contracts' => $contracts
+        )
+      );
+    // }else if($smart_contract_type == "v"){
+    
+    }
+
     die();
   }
 
