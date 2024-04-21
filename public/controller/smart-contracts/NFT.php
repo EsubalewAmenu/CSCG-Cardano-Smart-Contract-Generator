@@ -31,6 +31,7 @@ public function content_generator(){
     $inlineable_token_name_checkbox = $_POST['inlineable_token_name_checkbox'];
     $owner_ref_address_checkbox = $_POST['owner_ref_address_checkbox'];
     $owner_ref_address = $_POST['owner_ref_address'];
+    $offchain_code_checkbox = $_POST['offchain_code_checkbox'];
     $image_url = $_POST['image_url'];
     $description = $_POST['description'];
     $add_offchain_code = $_POST['add_offchain_code'];
@@ -83,14 +84,21 @@ saveNFTPolicy oref tn = writePolicyToFile
 nftCurrencySymbol :: TxOutRef -> TokenName -> CurrencySymbol
 nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn', $file_content);
 } else $file_content = str_replace("{{add_offchain_code}}", '', $file_content);
+$smart_contracts = array();
+$smart_contracts[] = array("NFT.hs" => $file_content);
 
-return array("NFT.hs" => $file_content, "lucid-nft.ts" => "test lucid-nft.ts");
 
-    // echo json_encode(
-    //   array(
-    //     'status' => 'success', 'contracts' => array("NFT.hs" => $file_content, "lucid-nft.ts" => "test lucid-nft.ts")
-    //   )
-    // );
-    // die();
-  }
+
+if($offchain_code_checkbox == "true"){
+
+  $file_path = plugin_dir_path(__FILE__).'templete/lucid-nft.ts';
+  $file_content = file_get_contents($file_path);
+  
+
+  $smart_contracts[] = array("lucid-nft.ts" => $file_content);
+
+}
+
+  return $smart_contracts;
+}
 }

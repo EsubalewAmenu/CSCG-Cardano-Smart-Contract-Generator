@@ -71,11 +71,16 @@
     function generateZip(contracts, filename) {
         var zip = new JSZip();
 
-        for (let key in contracts) {
-                if (contracts.hasOwnProperty(key)) { // This check isn't strictly necessary in modern JavaScript environments
-            zip.file(key, contracts[key]);
+        // Iterate over the array of objects
+        contracts.forEach(contract => {
+            // Now iterate over keys in each object
+            for (let key in contract) {
+                if (contract.hasOwnProperty(key)) { // Ensuring the property belongs to the object
+                    zip.file(key, contract[key]); // Add the file to the zip
                 }
             }
+        });
+
     
         // Generate the zip file
         zip.generateAsync({type:"blob"}).then(function(content) {
