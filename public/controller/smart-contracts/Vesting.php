@@ -23,9 +23,38 @@
 class CSCG_public_Vesting
 {
     public function content_generator(){
-        $file_path = plugin_dir_path(__FILE__).'templete/lucid-vesting.ts';
+        $file_path = plugin_dir_path(__FILE__).'templete/Vesting.hs';
         $file_content = file_get_contents($file_path);
         
+
+        $policy_generator_code_checkbox = $_POST['policy_generator_code_checkbox'];
+        $offchain_code_checkbox = $_POST['offchain_code_checkbox'];
+
+
+if($policy_generator_code == "true"){
+$file_content = str_replace("{{policy_generator_code}}", '
+---------------------------------------------------------------------------------------------------
+------------------------------------- HELPER FUNCTIONS --------------------------------------------
+
+saveVal :: IO ()
+saveVal = writeValidatorToFile "./assets/vesting.plutus" validator
+
+vestingAddressBech32 :: Network -> String
+vestingAddressBech32 network = validatorAddressBech32 network validator
+
+printVestingDatumJSON :: PubKeyHash -> String -> IO ()
+printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
+    { beneficiary = pkh
+    , deadline    = fromJust $ posixTimeFromIso8601 time
+    }', $file_content);
+    } else $file_content = str_replace("{{policy_generator_code}}", '', $file_content);
+
+
+    $smart_contracts = array();
+    $smart_contracts[] = array("Vesting.hs" => $file_content);
+
+    if($offchain_code_checkbox == "true"){
+
         $blockfrost_api_key = $_POST['blockfrost_api_key'];
         $vesting_deadline = $_POST['vesting_deadline'];
 
@@ -35,9 +64,8 @@ class CSCG_public_Vesting
 
         $file_content = str_replace("{{vesting_deadline}}", $vesting_deadline, $file_content);
 
-        $smart_contracts = array();
         $smart_contracts[] = array("lucid-vesting.ts" => $file_content);
-        
+    }
         return $smart_contracts;
     }
 }

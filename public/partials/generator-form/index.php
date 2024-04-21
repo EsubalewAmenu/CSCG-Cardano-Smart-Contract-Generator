@@ -9,7 +9,7 @@
 
         <div class="form-container drop-down-container">
             <div class="input-parent">
-                <label class="form-label" for="email">Choose:</label>
+                <label class="form-label" for="email">Smart Contract type</label>
                 <select id="dropDown" class="form-input">
                     <option value="" selected disabled>select one </option>
                     <?php foreach ($options_variable as $key => $value) { ?>
