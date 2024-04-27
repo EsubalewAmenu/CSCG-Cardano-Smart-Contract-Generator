@@ -8,19 +8,19 @@
 
 <div class="form-container checkbox-container inlineable-token-name-ckeckbox">
     <div class="checkbox-parent">
-        <input class="form-input form-checkbox inlineable-token-name-ckeckbox" type="checkbox" name="inlineable_token_name_checkbox" id="inlineable_token_name_checkbox">
+        <input class="form-input form-checkbox inlineable-token-name-ckeckbox" type="checkbox" name="inlineable_token_name_checkbox" id="inlineable_token_name_checkbox" checked>
         <label class="form-label" for="inlineable_token_name_checkbox">Inlineable token name?</label>
     
 </div>
 
 <div class="form-container checkbox-container owner-ref-address-ckeckbox">
     <div class="checkbox-parent">
-        <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="owner_ref_address_checkbox" id="owner_ref_address_checkbox">
+        <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="owner_ref_address_checkbox" id="owner_ref_address_checkbox" checked>
         <label class="form-label" for="owner_ref_address_checkbox">Is Owner Ref Address static:</label>
     
 </div>
 
-<div class="form-container owner-ref-address-container hidden">
+<div class="form-container owner-ref-address-container">
     <div class="input-parent">
                <label class="form-label" for="owner_ref_address">Owner Ref Address:</label>
         <input class="form-input" type="text" name="owner_ref_address" id="owner_ref_address">
@@ -29,24 +29,24 @@
 
 <div class="form-container">
     <div class="checkbox-parent">
-        <input class="form-input form-checkbox" type="checkbox" name="add_offchain_code" id="add_offchain_code">
+        <input class="form-input form-checkbox" type="checkbox" name="add_offchain_code" id="add_offchain_code" checked>
         <label class="form-label" for="add_offchain_code">Do You Want Policy Generator Code</label>
     </div>
 </div>
 
 <div class="form-container checkbox-container owner-ref-address-ckeckbox">
     <div class="checkbox-parent">
-        <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="offchain_code_checkbox" id="offchain_code_checkbox">
+        <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="offchain_code_checkbox" id="offchain_code_checkbox" checked>
         <label class="form-label" for="offchain_code_checkbox">Do you want offchain (lucid) code?</label>
     
 </div>
 
-<div class="image-url-metadata hidden">
+<div class="image-url-metadata">
     <label class="form-label" for="image_url">Image URL (Optional metadata)</label>
     <input class="form-input" type="text" name="image_url" id="image_url">
 </div>
 
-<div class="form-container description-metadata hidden">
+<div class="form-container description-metadata">
     <div class="input-parent">
             <label class="form-label" for="description">Description (Optional metadata)</label>
             <textarea class="form-input"  name="description" id="description"  cols="77" rows="3"></textarea>
@@ -55,7 +55,7 @@
 
 <div class="form-container">
     <div class="checkbox-parent">
-        <input class="form-input form-checkbox" type="checkbox" name="burn_code" id="burn_code">
+        <input class="form-input form-checkbox" type="checkbox" name="burn_code" id="burn_code" checked>
         <label class="form-label" for="burn_code">Do You Want NFT Burn Code</label>
     </div>
 </div>
