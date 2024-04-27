@@ -21,6 +21,10 @@
     <label class="form-label" for="vesting_deadline">Choose a vesting Deadline</label>
     <input class="form-input" type="datetime-local" name="vesting_deadline" id="vesting_deadline">
 </div>
+<div class="beneficiary_div">
+    <label class="form-label" for="beneficiary">Beneficiary Address</label>
+    <input class="form-input" type="text" name="beneficiary" id="beneficiary">
+</div>
 
 
 <script>
@@ -28,14 +32,17 @@
     offchainCodeCheckbox = document.querySelector('#offchain_code_checkbox')
     blockfrost_api_key_div = document.querySelector('.blockfrost_api_key_div')
     vesting_deadline_div = document.querySelector('.vesting_deadline_div')
+    beneficiary_div = document.querySelector('.beneficiary_div')
     offchainCodeCheckbox.addEventListener('change',function(){
         if(this.checked){
             blockfrost_api_key_div.classList.remove('hidden')
             vesting_deadline_div.classList.remove('hidden')
+            beneficiary_div.classList.remove('hidden')
         }
         else{
             blockfrost_api_key_div.classList.add('hidden')
             vesting_deadline_div.classList.add('hidden')
+            beneficiary_div.classList.add('hidden')
 
         }
     })
@@ -43,6 +50,7 @@
     return {
         blockfrost_api_key: document.querySelector('#blockfrost_api_key').value,
         vesting_deadline: document.querySelector('#vesting_deadline').value,
+        beneficiary: document.querySelector('#beneficiary').value,
         policy_generator_code_checkbox: document.querySelector('#policy_generator_code_checkbox').checked,
         offchain_code_checkbox: document.querySelector('#offchain_code_checkbox').checked,
     };

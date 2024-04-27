@@ -65,12 +65,14 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
 
         $blockfrost_api_key = $_POST['blockfrost_api_key'];
         $vesting_deadline = $_POST['vesting_deadline'];
+        $beneficiary = $_POST['beneficiary'];
 
         if($blockfrost_api_key == ""){
             $file_content = str_replace("{{blockfrost_api_key}}", "insert your own api key here", $file_content);
         }else $file_content = str_replace("{{blockfrost_api_key}}", $blockfrost_api_key, $file_content);
 
         $file_content = str_replace("{{vesting_deadline}}", $vesting_deadline, $file_content);
+        $file_content = str_replace("{{beneficiary}}", $beneficiary, $file_content);
 
         $smart_contracts[] = array("lucid-vesting.ts" => $file_content);
     }

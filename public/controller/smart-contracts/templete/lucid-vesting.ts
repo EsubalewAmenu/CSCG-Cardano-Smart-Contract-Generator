@@ -24,7 +24,7 @@ new Blockfrost(
 
 // load local stored seed as a wallet into lucid
 lucid.selectWalletFromSeed(secretSeed);
-const addr: Address = await lucid.wallet.address();
+const addr: Address = "{{beneficiary}}"  //await lucid.wallet.address();
 console.log(addr);
 
 // Define the vesting plutus script
