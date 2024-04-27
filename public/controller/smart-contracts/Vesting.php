@@ -93,8 +93,11 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
 
         if($assets_folder_checkbox == "true"){
 
-            $file_path = plugin_dir_path(__FILE__).'templete/assets/mistery1.plutus';
-            $smart_contracts[] = array("assets/mistery1.plutus" => file_get_contents($file_path));
+            $file_path = plugin_dir_path(__FILE__).'templete/assets/unit.json';
+            $smart_contracts[] = array("assets/unit.json" => file_get_contents($file_path));
+
+            $file_path = plugin_dir_path(__FILE__).'templete/assets/vesting.plutus';
+            $smart_contracts[] = array("assets/vesting.plutus" => file_get_contents($file_path));
         }
 
 
