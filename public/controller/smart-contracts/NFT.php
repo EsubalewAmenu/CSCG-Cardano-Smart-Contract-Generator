@@ -95,6 +95,7 @@ if($offchain_code_checkbox == "true"){
   $file_path = plugin_dir_path(__FILE__).'templete/lucid-nft.ts';
   $file_content = file_get_contents($file_path);
   
+  $file_content = str_replace("{{token_name}}", $token_name, $file_content);
 
   $smart_contracts[] = array("lucid-nft.ts" => $file_content);
 
