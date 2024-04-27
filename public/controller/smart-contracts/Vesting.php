@@ -89,6 +89,14 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
             $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
         }
 
+        $assets_folder_checkbox = $_POST['assets_folder_checkbox'];
+
+        if($assets_folder_checkbox == "true"){
+
+            $file_path = plugin_dir_path(__FILE__).'templete/assets/mistery1.plutus';
+            $smart_contracts[] = array("assets/mistery1.plutus" => file_get_contents($file_path));
+        }
+
 
     }
         return $smart_contracts;
