@@ -111,6 +111,21 @@ if($burn_code == "true"){
 
 }
 
+
+$utilities_folder_checkbox = $_POST['utilities_folder_checkbox'];
+if($utilities_folder_checkbox == "true"){
+
+    $file_path = plugin_dir_path(__FILE__).'templete/Utilities/Conversions.hs';
+    $smart_contracts[] = array("Utilities/Conversions.hs" => file_get_contents($file_path));
+
+    $file_path = plugin_dir_path(__FILE__).'templete/Utilities/PlutusTx.hs';
+    $smart_contracts[] = array("Utilities/PlutusTx.hs" => file_get_contents($file_path));
+
+    $file_path = plugin_dir_path(__FILE__).'templete/Utilities/Serialise.hs';
+    $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
+}
+
+
   return $smart_contracts;
 }
 }

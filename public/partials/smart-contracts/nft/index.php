@@ -60,6 +60,13 @@
     </div>
 </div>
 
+<div class="form-container checkbox-container utilities_folder-ckeckbox">
+    <div class="checkbox-parent">
+        <input class="form-input form-checkbox utilities_folder-ckeckbox" type="checkbox" name="utilities_folder_checkbox" id="utilities_folder_checkbox" checked>
+        <label class="form-label" for="utilities_folder_checkbox">Do you want Utilities folder that includes Conversions.hs, PlutusTx.hs and Serialise.hs?</label>
+    </div>
+</div>
+
 <script>
 
 offchainCodeCheckbox = document.querySelector('#offchain_code_checkbox')
@@ -99,6 +106,8 @@ offchainCodeCheckbox = document.querySelector('#offchain_code_checkbox')
         description: document.querySelector('#description').value,
         add_offchain_code: document.querySelector('#add_offchain_code').checked,
         burn_code: document.querySelector('#burn_code').checked,
+        utilities_folder_checkbox: document.querySelector('#utilities_folder_checkbox').checked,
+
     };
 }
 
