@@ -10,7 +10,7 @@
     <div class="checkbox-parent">
         <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="offchain_code_checkbox" id="offchain_code_checkbox" checked>
         <label class="form-label" for="offchain_code_checkbox">Do you want offchain (lucid) code?</label>
-    
+    </div>
 </div>
 
 <div class="blockfrost_api_key_div">
@@ -26,6 +26,18 @@
     <input class="form-input" type="text" name="beneficiary" id="beneficiary">
 </div>
 
+<div class="form-container checkbox-container utilities_folder-ckeckbox">
+    <div class="checkbox-parent">
+        <input class="form-input form-checkbox utilities_folder-ckeckbox" type="checkbox" name="utilities_folder_checkbox" id="utilities_folder_checkbox" checked>
+        <label class="form-label" for="utilities_folder_checkbox">Do you want Utilities folder that includes Conversions.hs, PlutusTx.hs and Serialise.hs?</label>
+    </div>
+</div>
+<div class="form-container checkbox-container assets_folder-ckeckbox">
+    <div class="checkbox-parent">
+        <input class="form-input form-checkbox assets_folder-ckeckbox" type="checkbox" name="assets_folder_checkbox" id="assets_folder_checkbox" checked>
+        <label class="form-label" for="assets_folder_checkbox">Do you want assets folder with .plutus file?</label>
+    </div>
+</div>
 
 <script>
 
@@ -53,6 +65,8 @@
         beneficiary: document.querySelector('#beneficiary').value,
         policy_generator_code_checkbox: document.querySelector('#policy_generator_code_checkbox').checked,
         offchain_code_checkbox: document.querySelector('#offchain_code_checkbox').checked,
+        utilities_folder_checkbox: document.querySelector('#utilities_folder_checkbox').checked,
+        assets_folder_checkbox: document.querySelector('#assets_folder_checkbox').checked,
     };
 }
 
