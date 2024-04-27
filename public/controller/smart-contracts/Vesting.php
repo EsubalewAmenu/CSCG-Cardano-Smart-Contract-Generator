@@ -27,11 +27,16 @@ class CSCG_public_Vesting
         $file_content = file_get_contents($file_path);
         
 
+    
+        $project_name = $_POST['projectName'];
+
+        $file_content = str_replace("{{project_name}}", $project_name, $file_content);
+
         $policy_generator_code_checkbox = $_POST['policy_generator_code_checkbox'];
         $offchain_code_checkbox = $_POST['offchain_code_checkbox'];
 
 
-if($policy_generator_code == "true"){
+if($policy_generator_code_checkbox == "true"){
 $file_content = str_replace("{{policy_generator_code}}", '
 ---------------------------------------------------------------------------------------------------
 ------------------------------------- HELPER FUNCTIONS --------------------------------------------
@@ -54,6 +59,9 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
     $smart_contracts[] = array("Vesting.hs" => $file_content);
 
     if($offchain_code_checkbox == "true"){
+
+        $file_path = plugin_dir_path(__FILE__).'templete/lucid-vesting.ts';
+        $file_content = file_get_contents($file_path);
 
         $blockfrost_api_key = $_POST['blockfrost_api_key'];
         $vesting_deadline = $_POST['vesting_deadline'];
