@@ -1,7 +1,7 @@
 
 <div class="form-container">
     <div class="input-parent">
-        <label class="form-label" for="token_name">Project Token name:</label>
+        <label class="form-label" for="token_name">NFT Token name:</label>
         <input class="form-input" type="text" name="token_name" id="token_name">
     </div>
 </div>
