@@ -8,7 +8,7 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https:///github.com/EsubalewAmenu
+ * @link              https://github.com/EsubalewAmenu
  * @since             1.0.0
  * @package           Cscg
  *
@@ -18,7 +18,7 @@
  * Description:       Smart contract generator for Cardano
  * Version:           1.0.0
  * Author:            Esubalew A
- * Author URI:        https:///github.com/EsubalewAmenu/
+ * Author URI:        https://github.com/EsubalewAmenu/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       cscg
@@ -30,11 +30,8 @@ if (!defined('WPINC')) {
 	die;
 }
 
-// if (!defined('cscg_active_sc')) {
-// 	define('cscg_active_sc', array("NFT" => "nft", "Burn" => "burn", "Mint" => "mint"));
-// }
 if (!defined('cscg_active_sc')) {
-	define('cscg_active_sc', array("NFT burn" => "nft-burn", "NFT mint" => "nft-mint"));
+	define('cscg_active_sc', array("NFT" => "nft", "Vesting" => "vesting"));
 }
 
 /**

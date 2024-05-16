@@ -43,16 +43,30 @@ class CSCG_public_landing
   }
 
   public function wp_ajax_cscg_generate_token(){
-    $file_path = plugin_dir_path(__FILE__).'file/sample.txt';
-    $file_content = file_get_contents($file_path);
-    $project_name = $_POST['projectName'];
 
-    $file_content = str_replace("{{project_name}}", $project_name, $file_content);
+    $smart_contract_type = $_POST['smart_contract_type'];
+
+    if($smart_contract_type == "nft"){
+      require_once plugin_dir_path( dirname( __FILE__ ) ) . 'smart-contracts/NFT.php';
+      $CSCG_public_NFT = new CSCG_public_NFT();
+
+      $contracts = $CSCG_public_NFT->content_generator();
+
+    }else if($smart_contract_type == "vesting"){
+    
+      require_once plugin_dir_path( dirname( __FILE__ ) ) . 'smart-contracts/Vesting.php';
+      $CSCG_public_Vesting = new CSCG_public_Vesting();
+
+      $contracts = $CSCG_public_Vesting->content_generator();
+
+    }
+
     echo json_encode(
       array(
-        'status' => 'success', 'message' => $file_content
+        'status' => 'success', 'contracts' => $contracts
       )
     );
+
     die();
   }
 

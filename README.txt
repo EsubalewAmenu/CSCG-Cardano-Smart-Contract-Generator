@@ -1,6 +1,6 @@
 === CSCG - Cardano Smart Contract Generator ===
 Contributors: esubalewa
-Donate link: https:///github.com/EsubalewAmenu/
+Donate link: https://github.com/EsubalewAmenu/
 Tags: Cardano, blockchain, smart contract, NFT, mint, burn
 Requires at least: 3.0.1
 Tested up to: 3.4

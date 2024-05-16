@@ -5,15 +5,11 @@
                 <label class="form-label" for="project_name">Module Name:</label>
                 <input class="form-input" type="text" name="project_name" id="project_name" required>
             </div>
-            <div class="input-parent">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-input" type="email" name="email" id="email" required>
-            </div>
         </div>
 
-        <div class="form-container drop-down-container" style="float: left;width:50%;">
+        <div class="form-container drop-down-container">
             <div class="input-parent">
-                <label class="form-label" for="email">Choose:</label>
+                <label class="form-label" for="email">Smart Contract type</label>
                 <select id="dropDown" class="form-input">
                     <option value="" selected disabled>select one </option>
                     <?php foreach ($options_variable as $key => $value) { ?>
@@ -54,7 +50,15 @@
                 dynamicContainer.innerHTML = response
                 generateToken.classList.remove('btn-disabled')
                 generateToken.disabled = false
-                handler()
+
+
+            // Find and execute scripts
+            Array.from(dynamicContainer.querySelectorAll('script')).forEach(oldScript => {
+                const newScript = document.createElement('script');
+                newScript.text = oldScript.text;
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
+
             }
         });
     }
@@ -64,36 +68,29 @@
     })
     
     // Function to generate a zip file
-    function generateZip(content, filename) {
+    function generateZip(contracts, filename) {
         var zip = new JSZip();
-        if (option.indexOf('mint') !== -1) {
-            zip.file("mint.hs", content);    
-        } else if (option.indexOf('burn') !== -1) {
-            zip.file("burn.hs", content);    
-        }
+
+        // Iterate over the array of objects
+        contracts.forEach(contract => {
+            // Now iterate over keys in each object
+            for (let key in contract) {
+                if (contract.hasOwnProperty(key)) { // Ensuring the property belongs to the object
+                    zip.file(key, contract[key]); // Add the file to the zip
+                }
+            }
+        });
+
     
-        // Add files to the zip
         // Generate the zip file
         zip.generateAsync({type:"blob"}).then(function(content) {
         // Save the zip file
         saveAs(content, `${filename}.zip`);
         });
     }
-    // function downloadFile(text,filename){
-
-
-    //     const element = document.createElement('a');
-    //     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    //     element.setAttribute('download', filename+'.txt');
-
-    //     element.style.display = 'none';
-    //     document.body.appendChild(element);
-
-    //     element.click();
-
-    //     document.body.removeChild(element);
-    // }
     generateToken.addEventListener('click', function(element) {
+        event.preventDefault();  // This stops the form from submitting normally
+
         const projectName = document.querySelector('#project_name')
         if(!projectName.value || projectName.value == ''){
             alert("Please Enter Your project name!")
@@ -104,32 +101,21 @@
                 type: 'POST',
                 data: {
                     action: 'cscg_generate_token',
-                    projectName:projectName.value
+                    projectName:projectName.value,
+                    smart_contract_type:option,
+                    
+                    ...getFormData()
+                    
                 },
                 success: function(response) {
                     const res = JSON.parse(response)
                     if(res.status == 'success'){
-                        generateZip(res.message,projectName.value)
-                        // downloadFile(res.message,projectName.value)
+                        generateZip(res.contracts,projectName.value)
                     } 
                 }
             });
         }
 
     })
-
-     function handler(){
-        ownerRefCheckbox = document.querySelector('#owner_ref_address')
-        ownerRefContainer = document.querySelector('.owner-ref-address-container')
-        ownerRefCheckbox.addEventListener('change',function(){
-            if(this.checked){
-                ownerRefContainer.classList.remove('hidden')
-            }
-            else{
-                ownerRefContainer.classList.add('hidden')
-
-            }
-        })
-    }
 
 </script>
