@@ -3,10 +3,11 @@
         <h3>Contract Detail</h3>
     </div>
     <form class="form" action="" method="post">
+    <p class="form-label">We'll use this information to generate the smart contract you need</p>
         <div class="form-container">
             <div class="input-parent">
                 <label class="bolded-form-label" for="project_name">Module Name:</label>
-                <input class="form-input" type="text" name="project_name" id="project_name" required>
+                <input class="form-input" type="text" name="project_name" id="project_name" placeholder="Module Name" required>
             </div>
         </div>
 

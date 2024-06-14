@@ -1,8 +1,8 @@
 
 <div class="form-container">
     <div class="input-parent">
-        <label class="bolded-form-label" for="token_name">NFT Token name:</label>
-        <input class="form-input" type="text" name="token_name" id="token_name">
+        <label class="bolded-form-label" for="token_name">NFT Token Name:</label>
+        <input class="form-input" type="text" name="token_name" id="token_name" placeholder="NFT Token Name">
     </div>
 </div>
 
@@ -23,14 +23,13 @@
 <div class="form-container owner-ref-address-container">
     <div class="input-parent">
         <label class="bolded-form-label" for="owner_ref_address">Owner Ref Address:</label>
-        <input class="form-input" type="text" name="owner_ref_address" id="owner_ref_address">
+        <input class="form-input" type="text" name="owner_ref_address" id="owner_ref_address" placeholder="Owner Ref Address">
     </div>
 </div>
 
 <div class="form-container">
     <div class="checkbox-parent">
         <input class="form-input form-checkbox" type="checkbox" name="add_offchain_code" id="add_offchain_code" checked>
-        <span class="checkmark"></span>
         <label class="form-label" for="add_offchain_code">Do You Want Policy Generator Code</label>
     </div>
 </div>
@@ -45,14 +44,14 @@
 <div class="form-container">
     <div class="input-parent">
         <label class="bolded-form-label" for="image_url">Image URL (Optional metadata)</label>
-        <input class="form-input" type="text" name="image_url" id="image_url">
+        <input class="form-input" type="text" name="image_url" id="image_url" placeholder="Image URL (Optional metadata)">
     </div>
 </div>
 
 <div class="form-container">
     <div class="input-parent">
         <label class="bolded-form-label" for="description">Description (Optional metadata)</label>
-        <textarea class="form-input" name="description" id="description" cols="77" rows="3"></textarea>
+        <textarea class="form-input" name="description" id="description" cols="77" rows="1" placeholder="Description (Optional metadata)"></textarea>
     </div>
 </div>
 
