@@ -1,8 +1,8 @@
 
 <div class="form-container">
     <div class="input-parent">
-        <label class="form-label" for="token_name">NFT Token name:</label>
-        <input class="form-input" type="text" name="token_name" id="token_name">
+        <label class="bolded-form-label" for="token_name">NFT Token Name:</label>
+        <input class="form-input" type="text" name="token_name" id="token_name" placeholder="NFT Token Name">
     </div>
 </div>
 
@@ -10,20 +10,20 @@
     <div class="checkbox-parent">
         <input class="form-input form-checkbox inlineable-token-name-ckeckbox" type="checkbox" name="inlineable_token_name_checkbox" id="inlineable_token_name_checkbox" checked>
         <label class="form-label" for="inlineable_token_name_checkbox">Inlineable token name?</label>
-    
+    </div>
 </div>
 
 <div class="form-container checkbox-container owner-ref-address-ckeckbox">
     <div class="checkbox-parent">
         <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="owner_ref_address_checkbox" id="owner_ref_address_checkbox" checked>
         <label class="form-label" for="owner_ref_address_checkbox">Is Owner Ref Address static:</label>
-    
+    </div>
 </div>
 
 <div class="form-container owner-ref-address-container">
     <div class="input-parent">
-               <label class="form-label" for="owner_ref_address">Owner Ref Address:</label>
-        <input class="form-input" type="text" name="owner_ref_address" id="owner_ref_address">
+        <label class="bolded-form-label" for="owner_ref_address">Owner Ref Address:</label>
+        <input class="form-input" type="text" name="owner_ref_address" id="owner_ref_address" placeholder="Owner Ref Address">
     </div>
 </div>
 
@@ -38,18 +38,20 @@
     <div class="checkbox-parent">
         <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="offchain_code_checkbox" id="offchain_code_checkbox" checked>
         <label class="form-label" for="offchain_code_checkbox">Do you want offchain (lucid) code?</label>
-    
+    </div>
 </div>
 
-<div class="image-url-metadata">
-    <label class="form-label" for="image_url">Image URL (Optional metadata)</label>
-    <input class="form-input" type="text" name="image_url" id="image_url">
-</div>
-
-<div class="form-container description-metadata">
+<div class="form-container">
     <div class="input-parent">
-            <label class="form-label" for="description">Description (Optional metadata)</label>
-            <textarea class="form-input"  name="description" id="description"  cols="77" rows="3"></textarea>
+        <label class="bolded-form-label" for="image_url">Image URL (Optional metadata)</label>
+        <input class="form-input" type="text" name="image_url" id="image_url" placeholder="Image URL (Optional metadata)">
+    </div>
+</div>
+
+<div class="form-container">
+    <div class="input-parent">
+        <label class="bolded-form-label" for="description">Description (Optional metadata)</label>
+        <textarea class="form-input" name="description" id="description" cols="77" rows="1" placeholder="Description (Optional metadata)"></textarea>
     </div>
 </div>
 
