@@ -23,7 +23,7 @@
 class CSCG_public_Vesting
 {
     public function content_generator(){
-        $file_path = plugin_dir_path(__FILE__).'templete/Vesting.hs';
+        $file_path = plugin_dir_path(__FILE__).'template/Vesting.hs';
         $file_content = file_get_contents($file_path);
         
 
@@ -60,7 +60,7 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
 
     if($offchain_code_checkbox == "true"){
 
-        $file_path = plugin_dir_path(__FILE__).'templete/lucid-vesting.ts';
+        $file_path = plugin_dir_path(__FILE__).'template/lucid-vesting.ts';
         $file_content = file_get_contents($file_path);
 
         $blockfrost_api_key = $_POST['blockfrost_api_key'];
@@ -79,13 +79,13 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
         $utilities_folder_checkbox = $_POST['utilities_folder_checkbox'];
         if($utilities_folder_checkbox == "true"){
 
-            $file_path = plugin_dir_path(__FILE__).'templete/Utilities/Conversions.hs';
+            $file_path = plugin_dir_path(__FILE__).'template/Utilities/Conversions.hs';
             $smart_contracts[] = array("Utilities/Conversions.hs" => file_get_contents($file_path));
 
-            $file_path = plugin_dir_path(__FILE__).'templete/Utilities/PlutusTx.hs';
+            $file_path = plugin_dir_path(__FILE__).'template/Utilities/PlutusTx.hs';
             $smart_contracts[] = array("Utilities/PlutusTx.hs" => file_get_contents($file_path));
 
-            $file_path = plugin_dir_path(__FILE__).'templete/Utilities/Serialise.hs';
+            $file_path = plugin_dir_path(__FILE__).'template/Utilities/Serialise.hs';
             $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
         }
 
@@ -93,10 +93,10 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
 
         if($assets_folder_checkbox == "true"){
 
-            $file_path = plugin_dir_path(__FILE__).'templete/assets/unit.json';
+            $file_path = plugin_dir_path(__FILE__).'template/assets/unit.json';
             $smart_contracts[] = array("assets/unit.json" => file_get_contents($file_path));
 
-            $file_path = plugin_dir_path(__FILE__).'templete/assets/vesting.plutus';
+            $file_path = plugin_dir_path(__FILE__).'template/assets/vesting.plutus';
             $smart_contracts[] = array("assets/vesting.plutus" => file_get_contents($file_path));
         }
 

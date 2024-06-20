@@ -23,7 +23,7 @@
 class CSCG_public_NFT
 {
 public function content_generator(){
-    $file_path = plugin_dir_path(__FILE__).'templete/NFT.hs';
+    $file_path = plugin_dir_path(__FILE__).'template/NFT.hs';
     $file_content = file_get_contents($file_path);
     
     $project_name = $_POST['projectName'];
@@ -92,7 +92,7 @@ $smart_contracts[] = array("NFT.hs" => $file_content);
 
 if($offchain_code_checkbox == "true"){
 
-  $file_path = plugin_dir_path(__FILE__).'templete/lucid-nft.ts';
+  $file_path = plugin_dir_path(__FILE__).'template/lucid-nft.ts';
   $file_content = file_get_contents($file_path);
   
   $file_content = str_replace("{{token_name}}", $token_name, $file_content);
@@ -103,7 +103,7 @@ if($offchain_code_checkbox == "true"){
 
 if($burn_code == "true"){
 
-  $file_path = plugin_dir_path(__FILE__).'templete/Burn.hs';
+  $file_path = plugin_dir_path(__FILE__).'template/Burn.hs';
   $file_content = file_get_contents($file_path);
   
 
@@ -115,13 +115,13 @@ if($burn_code == "true"){
 $utilities_folder_checkbox = $_POST['utilities_folder_checkbox'];
 if($utilities_folder_checkbox == "true"){
 
-    $file_path = plugin_dir_path(__FILE__).'templete/Utilities/Conversions.hs';
+    $file_path = plugin_dir_path(__FILE__).'template/Utilities/Conversions.hs';
     $smart_contracts[] = array("Utilities/Conversions.hs" => file_get_contents($file_path));
 
-    $file_path = plugin_dir_path(__FILE__).'templete/Utilities/PlutusTx.hs';
+    $file_path = plugin_dir_path(__FILE__).'template/Utilities/PlutusTx.hs';
     $smart_contracts[] = array("Utilities/PlutusTx.hs" => file_get_contents($file_path));
 
-    $file_path = plugin_dir_path(__FILE__).'templete/Utilities/Serialise.hs';
+    $file_path = plugin_dir_path(__FILE__).'template/Utilities/Serialise.hs';
     $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
 }
 
