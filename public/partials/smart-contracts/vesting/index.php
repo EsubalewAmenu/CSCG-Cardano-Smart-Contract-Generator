@@ -15,7 +15,7 @@
 
 <div class="blockfrost_api_key_div">
     <label class="form-label" for="blockfrost_api_key">Blockfrost Preprod api key</label>
-    <input class="form-input" type="text" name="blockfrost_api_key" id="blockfrost_api_key" placeholder="If not filled placeholder will be 'insert your own api key here'">
+    <input class="form-input" type="text" name="blockfrost_api_key" id="blockfrost_api_key" placeholder="Insert your own api key here">
 </div>
 <div class="vesting_deadline_div">
     <label class="form-label" for="vesting_deadline">Choose a vesting Deadline</label>
