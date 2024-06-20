@@ -14,12 +14,12 @@
   border-radius: 10px 10px 0 0;
   width: 100%;
   padding: 1rem 2.5rem 1rem 5rem;
-  position: relative; 
-  display: inline-block; 
+  position: relative;
+  display: inline-block;
 }
 
 .form-label h3::after {
-  content: '1'; /* The symbol */
+  content: "1"; /* The symbol */
   font-size: small;
   background-color: #fff;
   color: #000;
@@ -29,8 +29,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 30px; 
-  vertical-align: middle; 
+  margin-left: 30px;
+  vertical-align: middle;
 }
 
 .form {
@@ -79,13 +79,12 @@
 }
 
 .form-input::placeholder {
-  font-size: 0.8em; 
+  font-size: 0.8em;
   color: #c1c1c1;
 }
 
 .drop-down-container .form-input {
-
- background-color: transparent;
+  background-color: transparent;
   background-size: 12px;
   padding-right: 30px;
 }
@@ -106,7 +105,7 @@
 }
 
 .checkbox-parent input[type="checkbox"] + label:before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -118,7 +117,7 @@
 }
 
 .checkbox-parent input[type="checkbox"]:checked + label:before {
-  content: '\2714';
+  content: "\2714";
   display: inline-block;
   width: 16px;
   height: 16px;
@@ -131,11 +130,10 @@
   line-height: 15px;
   font-size: 15px;
   vertical-align: text-bottom;
-
 }
 
 .checkbox-parent label {
-  line-height: 15px; 
+  line-height: 15px;
   vertical-align: middle;
 }
 
@@ -154,6 +152,9 @@
   background-color: #ccc;
   cursor: not-allowed;
 }
+button:hover {
+  background-color: #000;
+}
 
 textarea.form-input {
   resize: none;
@@ -171,9 +172,9 @@ textarea.form-input {
 
 @media (max-width: 768px) {
   .container {
-      width: 90%;
+    width: 90%;
   }
-  .form{
+  .form {
     padding: 20px;
   }
   .form-label h3 {
@@ -181,10 +182,14 @@ textarea.form-input {
   }
 
   .form-input {
-      width: 100%;
+    width: 100%;
   }
 
   textarea.form-input {
-      width: calc(100% - 22px);
+    width: calc(100% - 22px);
   }
+}
+
+.hidden {
+  display: none;
 }
