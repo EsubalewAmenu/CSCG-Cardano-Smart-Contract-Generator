@@ -67,10 +67,14 @@
             }
         });
     }
+    if(dropDownInput.value) fetchContent(dropDownInput.value)
+
     dropDownInput.addEventListener('change', function(element) {
         option = element.target.value
         fetchContent(element.target.value)
     })
+
+
     
     // Function to generate a zip file
     function generateZip(contracts, filename) {
