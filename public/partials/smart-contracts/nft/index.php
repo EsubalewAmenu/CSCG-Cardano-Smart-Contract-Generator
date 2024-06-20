@@ -36,22 +36,21 @@
 
 <div class="form-container checkbox-container owner-ref-address-ckeckbox">
     <div class="checkbox-parent">
-        <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="offchain_code_checkbox" id="offchain_code_checkbox" checked>
+        <input class="form-input form-checkbox owner-ref-address-ckeckbox" type="checkbox" name="offchain_code_checkbox" id="offchain_code_checkbox">
         <label class="form-label" for="offchain_code_checkbox">Do you want offchain (lucid) code?</label>
     </div>
 </div>
-
-<div class="form-container">
+<div class="form-container image-url-metadata hidden" >
     <div class="input-parent">
         <label class="bolded-form-label" for="image_url">Image URL (Optional metadata)</label>
-        <input class="form-input" type="text" name="image_url" id="image_url" placeholder="Image URL (Optional metadata)">
+        <input class="form-input image-url-metadata" type="text" name="image_url" id="image_url" placeholder="Image URL (Optional metadata)">
     </div>
 </div>
 
-<div class="form-container">
+<div class="form-container description-metadata hidden">
     <div class="input-parent">
         <label class="bolded-form-label" for="description">Description (Optional metadata)</label>
-        <textarea class="form-input" name="description" id="description" cols="77" rows="1" placeholder="Description (Optional metadata)"></textarea>
+        <textarea class="form-input " name="description" id="description" cols="77" rows="1" placeholder="Description (Optional metadata)"></textarea>
     </div>
 </div>
 
