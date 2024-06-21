@@ -1,17 +1,21 @@
 <div class="container">
+    <div class="form-label">
+        <h3>Contract Detail</h3>
+    </div>
     <form class="form" action="" method="post">
+    <p class="form-label">We'll use this information to generate the smart contract you need</p>
         <div class="form-container">
             <div class="input-parent">
-                <label class="form-label" for="project_name">Module Name:</label>
-                <input class="form-input" type="text" name="project_name" id="project_name" required>
+                <label class="bolded-form-label" for="project_name">Module Name:</label>
+                <input class="form-input" type="text" name="project_name" id="project_name" placeholder="Module Name" required>
             </div>
         </div>
 
         <div class="form-container drop-down-container">
             <div class="input-parent">
-                <label class="form-label" for="email">Smart Contract type</label>
-                <select id="dropDown" class="form-input">
-                    <option value="" selected disabled>select one </option>
+                <label class="bolded-form-label" for="dropDown">Smart Contract type:</label>
+                <select id="dropDown" class="form-input" required>
+                    <option value="" selected disabled>select one</option>
                     <?php foreach ($options_variable as $key => $value) { ?>
                         <option value="<?php echo $value ?>"><?php echo $key ?></option>
                     <?php } ?>
@@ -23,6 +27,7 @@
         <button id="submit_btn" disabled="true" class="submit-button btn-disabled" type="submit" data-user-id="<?php echo get_current_user_id() ?>">Generate the Smart contract code</button>
     </form>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.5.0/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
@@ -62,10 +67,14 @@
             }
         });
     }
+    if(dropDownInput.value) fetchContent(dropDownInput.value)
+
     dropDownInput.addEventListener('change', function(element) {
         option = element.target.value
         fetchContent(element.target.value)
     })
+
+
     
     // Function to generate a zip file
     function generateZip(contracts, filename) {
