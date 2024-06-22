@@ -123,6 +123,7 @@ class Cscg {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-cscg-public.php';
 
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/controller/generator-form/landing.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/controller/common.php';
 
 		$this->loader = new Cscg_Loader();
 
@@ -184,6 +185,11 @@ class Cscg {
 		$this->loader->add_action('wp_ajax_cscg_generate_token', $CSCG_public_landing, 'wp_ajax_cscg_generate_token');
 		$this->loader->add_action('wp_ajax_nopriv_cscg_generate_token', $CSCG_public_landing, 'wp_ajax_cscg_generate_token');
 		
+
+		$CSCG_public_common = new CSCG_public_common();
+		$this->loader->add_shortcode('section_direction', $CSCG_public_common, 'section_direction');
+		$this->loader->add_shortcode('section_showcase', $CSCG_public_common, 'section_showcase');
+
 	}
 
 	/**
