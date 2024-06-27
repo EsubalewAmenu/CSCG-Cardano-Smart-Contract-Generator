@@ -61,6 +61,10 @@ class CSCG_public_landing
 
     }
 
+    $generated_contracts = get_option('cscg_contracts',0);
+
+    update_option('cscg_contracts',$generated_contracts+=1);
+    
     echo json_encode(
       array(
         'status' => 'success', 'contracts' => $contracts
