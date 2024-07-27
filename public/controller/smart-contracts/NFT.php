@@ -125,6 +125,16 @@ if($utilities_folder_checkbox == "true"){
     $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
 }
 
+$file_path = plugin_dir_path(__FILE__).'template/Project_Name.cabal';
+$file_content = file_get_contents($file_path);
+
+$file_content = str_replace("{{project_name}}", $project_name, $file_content);
+
+$smart_contracts[] = array($project_name.".cabal" => $file_content);
+
+$file_path = plugin_dir_path(__FILE__).'template/cabal.project';
+$smart_contracts[] = array("cabal.project" => file_get_contents($file_path));
+
 
   return $smart_contracts;
 }
