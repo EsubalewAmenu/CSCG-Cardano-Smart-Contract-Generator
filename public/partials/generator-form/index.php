@@ -119,7 +119,7 @@
                 success: function(response) {
                     const res = JSON.parse(response)
                     if(res.status == 'success'){
-                        generateZip(res.contracts,projectName.value)
+                        generateZip(res.contracts,dropDownInput.options[dropDownInput.selectedIndex].text)
                     } 
                 }
             });

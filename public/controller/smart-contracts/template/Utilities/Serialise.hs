@@ -1,6 +1,6 @@
 {-# LANGUAGE LambdaCase #-}
 
-module Utilities.Serialise
+module  Serialise
   ( validatorToScript
   , policyToScript
   , codeToScript
@@ -27,6 +27,8 @@ import           Plutus.V1.Ledger.Api  (ToData)
 import qualified Plutus.V2.Ledger.Api  as PlutusV2
 import           PlutusTx              (CompiledCode)
 import           Text.Printf           (printf)
+import System.IO
+import Prelude
 
 
 serializableToScript :: Serialise a => a -> PlutusScript PlutusScriptV2
