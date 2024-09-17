@@ -80,13 +80,13 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
         if($utilities_folder_checkbox == "true"){
 
             $file_path = plugin_dir_path(__FILE__).'template/Utilities/Conversions.hs';
-            $smart_contracts[] = array("Utilities/Conversions.hs" => file_get_contents($file_path));
-
-            $file_path = plugin_dir_path(__FILE__).'template/Utilities/PlutusTx.hs';
-            $smart_contracts[] = array("Utilities/PlutusTx.hs" => file_get_contents($file_path));
-
+            $smart_contracts[] = array("src/Config/Conversions.hs" => file_get_contents($file_path));
+        
+            $file_path = plugin_dir_path(__FILE__).'template/Utilities/Utils.hs';
+            $smart_contracts[] = array("src/Config/Utils.hs" => file_get_contents($file_path));
+        
             $file_path = plugin_dir_path(__FILE__).'template/Utilities/Serialise.hs';
-            $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
+            $smart_contracts[] = array("src/Config/Serialise.hs" => file_get_contents($file_path));
         }
 
         $assets_folder_checkbox = $_POST['assets_folder_checkbox'];
@@ -106,8 +106,8 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
         
         $file_content = str_replace("{{project_name}}", $project_name, $file_content);
         
-        $smart_contracts[] = array($project_name.".cabal" => $file_content);
-        
+        $smart_contracts[] = array("src/src.cabal" => $file_content);
+
         $file_path = plugin_dir_path(__FILE__).'template/cabal.project';
         $smart_contracts[] = array("cabal.project" => file_get_contents($file_path));
         

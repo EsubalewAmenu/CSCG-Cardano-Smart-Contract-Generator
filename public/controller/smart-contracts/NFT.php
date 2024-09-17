@@ -86,7 +86,7 @@ nftCurrencySymbol :: TxOutRef -> TokenName -> CurrencySymbol
 nftCurrencySymbol oref tn = currencySymbol $ nftPolicy oref tn', $file_content);
 } else $file_content = str_replace("{{add_offchain_code}}", '', $file_content);
 $smart_contracts = array();
-$smart_contracts[] = array("NFT.hs" => $file_content);
+$smart_contracts[] = array("src/".$project_name."/NFT.hs" => $file_content);
 
 
 
@@ -97,7 +97,7 @@ if($offchain_code_checkbox == "true"){
   
   $file_content = str_replace("{{token_name}}", $token_name, $file_content);
 
-  $smart_contracts[] = array("lucid-nft.ts" => $file_content);
+  $smart_contracts[] = array("src/".$project_name."/lucid-nft.ts" => $file_content);
 
 }
 
@@ -107,7 +107,7 @@ if($burn_code == "true"){
   $file_content = file_get_contents($file_path);
   
 
-  $smart_contracts[] = array("Burn.hs" => $file_content);
+  $smart_contracts[] = array("src/".$project_name."/Burn.hs" => $file_content);
 
 }
 
@@ -116,21 +116,21 @@ $utilities_folder_checkbox = $_POST['utilities_folder_checkbox'];
 if($utilities_folder_checkbox == "true"){
 
     $file_path = plugin_dir_path(__FILE__).'template/Utilities/Conversions.hs';
-    $smart_contracts[] = array("Utilities/Conversions.hs" => file_get_contents($file_path));
+    $smart_contracts[] = array("src/Config/Conversions.hs" => file_get_contents($file_path));
 
-    $file_path = plugin_dir_path(__FILE__).'template/Utilities/PlutusTx.hs';
-    $smart_contracts[] = array("Utilities/PlutusTx.hs" => file_get_contents($file_path));
+    $file_path = plugin_dir_path(__FILE__).'template/Utilities/Utils.hs';
+    $smart_contracts[] = array("src/Config/Utils.hs" => file_get_contents($file_path));
 
     $file_path = plugin_dir_path(__FILE__).'template/Utilities/Serialise.hs';
-    $smart_contracts[] = array("Utilities/Serialise.hs" => file_get_contents($file_path));
+    $smart_contracts[] = array("src/Config/Serialise.hs" => file_get_contents($file_path));
 }
 
-$file_path = plugin_dir_path(__FILE__).'template/Project_Name.cabal';
+$file_path = plugin_dir_path(__FILE__).'template/src.cabal';
 $file_content = file_get_contents($file_path);
 
 $file_content = str_replace("{{project_name}}", $project_name, $file_content);
 
-$smart_contracts[] = array($project_name.".cabal" => $file_content);
+$smart_contracts[] = array("src/src.cabal" => $file_content);
 
 $file_path = plugin_dir_path(__FILE__).'template/cabal.project';
 $smart_contracts[] = array("cabal.project" => file_get_contents($file_path));
