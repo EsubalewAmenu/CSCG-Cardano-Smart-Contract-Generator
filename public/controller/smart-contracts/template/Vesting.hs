@@ -3,7 +3,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell   #-}
 
-module {{project_name}}.Vesting where
+module Vesting where
 
 import           Data.Maybe                (fromJust)
 import           Plutus.V1.Ledger.Interval (contains)

@@ -3,7 +3,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TemplateHaskell   #-}
 
-module {{project_name}}.NFT where
+module NFT where
 
 import qualified Data.ByteString.Char8      as BS8
 import           Plutus.V1.Ledger.Value     (flattenValue)
