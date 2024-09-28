@@ -22,9 +22,9 @@ import           PlutusTx.Prelude           (Bool (False), Eq ((==)), any,
                                              traceIfFalse, ($), (&&))
 import           Prelude                    (IO, Show (show), String)
 import           Text.Printf                (printf)
-import           Utilities                  (bytesToHex, currencySymbol,
-                                             wrapPolicy, writeCodeToFile,
-                                             writePolicyToFile)
+import           Serialise         (writePolicyToFile,writeCodeToFile)
+import           Conversions             (bytesToHex, currencySymbol)
+import           Utils             (wrapPolicy)
 
 {{inlineable_token_name_checkbox}}
 {{inlineable_TxOutRef_checkbox}}
