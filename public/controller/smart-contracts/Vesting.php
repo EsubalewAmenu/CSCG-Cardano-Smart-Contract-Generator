@@ -96,7 +96,7 @@ printVestingDatumJSON pkh time = printDataToJSON $ VestingDatum
             $file_path = plugin_dir_path(__FILE__).'template/assets/unit.json';
             $smart_contracts[] = array("assets/unit.json" => file_get_contents($file_path));
 
-            $file_path = plugin_dir_path(__FILE__).'template/assets/vesting.plutus';
+            $file_path = plugin_dir_path(__FILE__).'template/assets/script.plutus';
             $smart_contracts[] = array("assets/vesting.plutus" => file_get_contents($file_path));
         }
 

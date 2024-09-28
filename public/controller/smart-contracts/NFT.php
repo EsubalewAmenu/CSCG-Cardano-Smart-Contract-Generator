@@ -99,6 +99,11 @@ if($offchain_code_checkbox == "true"){
 
   $smart_contracts[] = array("src/".$project_name."/lucid-nft.ts" => $file_content);
 
+
+  $file_path = plugin_dir_path(__FILE__).'template/assets/script.plutus';
+  $file_content = file_get_contents($file_path);
+  $smart_contracts[] = array("src/assets/nft.plutus" => $file_content);
+
 }
 
 if($burn_code == "true"){
