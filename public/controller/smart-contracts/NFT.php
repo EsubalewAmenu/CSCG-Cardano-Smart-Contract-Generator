@@ -141,6 +141,9 @@ $file_path = plugin_dir_path(__FILE__).'template/cabal.project';
 $smart_contracts[] = array("cabal.project" => file_get_contents($file_path));
 
 
+$file_path = plugin_dir_path(__FILE__).'template/secret.ts';
+$smart_contracts[] = array("src/".$project_name."/secret.ts" => file_get_contents($file_path));
+
   return $smart_contracts;
 }
 }
